@@ -24,7 +24,7 @@ class DataIngestion:
             dataset_url = self.data_ingestion_config.data_download_url
             zip_download_dir = self.data_ingestion_config.data_ingestion_dir
             os.makedirs(zip_download_dir, exist_ok=True)
-            data_file_name = "data.zip"
+            data_file_name = "End_to_End_Safety_Helmet_Jacket_data.zip"
             zip_file_path = os.path.join(zip_download_dir, data_file_name)
             logging.info(f"Downloading data from {dataset_url} into file {zip_file_path}")
 
