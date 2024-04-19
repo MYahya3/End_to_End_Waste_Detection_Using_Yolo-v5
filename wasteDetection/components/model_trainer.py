@@ -37,15 +37,16 @@ class ModelTrainer:
 
             os.system(
                 f"cd yolov5/ && python train.py --img 416 --batch {self.model_trainer_config.batch_size} --epochs {self.model_trainer_config.no_epochs} --data ../data.yaml --cfg ./models/custom_yolov5s.yaml --weights {self.model_trainer_config.weight_name} --name yolov5s_results  --cache")
-            os.system("cp yolov5/runs/train/yolov5s_results/weights/best.pt yolov5/")
+
             os.makedirs(self.model_trainer_config.model_trainer_dir, exist_ok=True)
             shutil.copy(
                 "yolov5/runs/train/yolov5s_results/weights/best.pt", f"{self.model_trainer_config.model_trainer_dir}/")
+            print(self.model_trainer_config.model_trainer_dir)
 
-            # shutil.rmtree("yolov5/runs/")
-            # shutil.rmtree("train")
-            # shutil.rmtree("val")
-            # os.remove("data.yaml")
+            shutil.rmtree("yolov5/runs/")
+            shutil.rmtree("train")
+            shutil.rmtree("val")
+            os.remove("data.yaml")
 
             model_trainer_artifact = ModelTrainerArtifact(
                 trained_model_file_path="yolov5/best.pt",
